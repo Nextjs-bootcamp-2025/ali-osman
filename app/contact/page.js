@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import Button from '../components/Button';
-
+import DisplayName from '../components/DisplayName';
 // onChange Event
 
 const Contact = () => {
@@ -10,6 +9,7 @@ const Contact = () => {
 
   return (
     <div className="text-center flex flex-col justify-center items-center">
+      <DisplayName />
       <h1>Login</h1>
       <form
         action=""
