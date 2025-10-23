@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Button from './components/Button';
 import CourseContent from './components/CourseContent';
+import Counter from './components/Counter';
 
 export default function Home() {
   const [shouldShowTitle, setShouldShowTitle] = useState(false);
@@ -31,6 +32,8 @@ export default function Home() {
       >
         show title
       </button>
+
+      <Counter />
     </main>
   );
 }
