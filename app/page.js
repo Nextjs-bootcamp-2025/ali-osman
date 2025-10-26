@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from './components/Button';
 import CourseContent from './components/CourseContent';
 import Counter from './components/Counter';
+import Test from './components/Test';
 
 export default function Home() {
   const [shouldShowTitle, setShouldShowTitle] = useState(false);
@@ -34,6 +35,8 @@ export default function Home() {
       </button>
 
       <Counter />
+      <h1>test component</h1>
+      <Test />
     </main>
   );
 }
