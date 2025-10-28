@@ -6,7 +6,7 @@ import Button from './components/Button';
 import CourseContent from './components/CourseContent';
 import Counter from './components/Counter';
 import Test from './components/Test';
-
+import ContactComponent from './components/Contact';
 export default function Home() {
   const [shouldShowTitle, setShouldShowTitle] = useState(false);
 
@@ -16,6 +16,7 @@ export default function Home() {
 
   return (
     <main className="main">
+      <ContactComponent />
       {shouldShowTitle == true ? (
         <h1 className="text-3xl font-bold underline">Nextjs Bootcamp</h1>
       ) : null}
