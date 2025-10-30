@@ -1,33 +1,27 @@
 'use client';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function UsersPage() {
+const UsersPage = () => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
 
-  async function fetchUsers() {
-    const res = await fetch('/api/users');
-    const data = await res.json();
+ const fetchUsers = async () => {
+    const res = await axios.get('/api/users');
+    const data = await res.data;
     setUsers(data);
   }
 
-  async function addUser() {
-    await fetch('/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name }),
-    });
+ const addUser = async () => {
+    await axios.post('/api/users', { name });
     setName('');
     fetchUsers();
   }
 
-  async function deleteUser(id) {
-    await fetch('/api/users', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id }),
-    });
-    fetchUsers();
+ const deleteUser = async (id) => {
+    await axios.delete('/api/users', { data: { id } }).then((res) => {
+      fetchUsers();
+    })
   }
 
   useEffect(() => {
@@ -37,7 +31,7 @@ export default function UsersPage() {
   return (
     <main className="max-w-md mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4 text-right">
-        👥 قائمة المستخدمين
+         قائمة المستخدمين
       </h1>
       <div className="flex gap-2 mb-4">
         <input
@@ -55,12 +49,12 @@ export default function UsersPage() {
       </div>
 
       <ul className="space-y-2">
-        {users.map((u) => (
-          <li key={u.id} className="flex justify-between border p-2 rounded">
-            {u.name}
+        {users && users.map((user) => (
+          <li key={user.id} className="flex justify-between border p-2 rounded">
+            {user.name}
             <button
-              onClick={() => deleteUser(u.id)}
-              className="text-red-600 hover:text-red-800"
+              onClick={() => deleteUser(user.id)}
+              className="text-red-600 hover:text-red-800  cursor-pointer"
             >
               حذف
             </button>
@@ -70,3 +64,6 @@ export default function UsersPage() {
     </main>
   );
 }
+
+
+export default UsersPage

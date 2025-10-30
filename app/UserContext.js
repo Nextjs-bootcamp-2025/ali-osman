@@ -1,6 +1,10 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
 
+// state management system
+// 1- context
+ // 2- redux
+
 // إنشاء السياق
 const UserContext = createContext();
 
@@ -11,13 +15,14 @@ export function UserProvider({ children }) {
   const [error, setError] = useState(null);     // الأخطاء
 
   // دالة لجلب المستخدمين من JSONPlaceholder
-  async function fetchUsers() {
+  const fetchUsers = async () => {
     try {
       setLoading(true);
       const res = await fetch('https://jsonplaceholder.typicode.com/users');
       const data = await res.json();
       setUsers(data);
     } catch (err) {
+      console.log(err.message);
       setError('فشل في جلب المستخدمين');
     } finally {
       setLoading(false);
@@ -39,8 +44,6 @@ export function UserProvider({ children }) {
 export function useUsers() {
   return useContext(UserContext);
 }
-
-
 
 
 
