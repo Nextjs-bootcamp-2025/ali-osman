@@ -27,7 +27,7 @@ export default function ContactComponent() {
 
   return (
     <main className="max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4 text-right">📩 نموذج التواصل</h1>
+      <h1 className="text-2xl font-bold mb-4 text-right text-secondary">📩 نموذج التواصل</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4 text-right">
         <input

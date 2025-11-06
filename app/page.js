@@ -7,6 +7,7 @@ import CourseContent from './components/CourseContent';
 import Counter from './components/Counter';
 import Test from './components/Test';
 import ContactComponent from './components/Contact';
+
 export default function Home() {
   const [shouldShowTitle, setShouldShowTitle] = useState(false);
 

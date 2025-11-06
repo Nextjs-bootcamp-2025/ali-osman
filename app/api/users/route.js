@@ -10,6 +10,12 @@ export async function GET() {
   return Response.json(users);
 }
 
+// export async function GET(request) {
+//   const body = await request.json();
+//   const foundedUserByName = users.find((user) => user.name === body.name);
+//   return Response.json(foundedUserByName);
+// }
+
 // Add new user
 export async function POST(request) {
   // this is the request body from that we receive from frontend

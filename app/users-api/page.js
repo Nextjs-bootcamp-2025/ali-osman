@@ -5,6 +5,8 @@ import axios from 'axios';
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
+  const [ isEdit, setIsEdit ] = useState(false);
+  const [ selectedUser, setselectedUser ] = useState('');
 
  const fetchUsers = async () => {
     const res = await axios.get('/api/users');
@@ -58,8 +60,26 @@ const UsersPage = () => {
             >
               حذف
             </button>
+            <button
+              onClick={() => {
+                setIsEdit(true)
+                setselectedUser(user.name)
+              }}
+              className="text-green-600 hover:text-red-800  cursor-pointer"
+            >
+              تعديل
+            </button>
           </li>
         ))}
+
+        {
+          isEdit && 
+            <div className="popup flex gap-2 flex-col border shadow-lg p-4">
+              <p className='cursor-pointer' onClick={(e) => {setIsEdit(false)}}>x</p>
+              <input defaultValue={selectedUser} type="text" className='border' />
+              <button className='border p-2'>update</button>
+            </div>
+        }
       </ul>
     </main>
   );
